@@ -8,5 +8,8 @@
         <dependent-module archiveName="app-web-1.0-SNAPSHOT.war" deploy-path="/" handle="module:/resource/app-web/app-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="primefaces-7.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/primefaces/primefaces/7.0/primefaces-7.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
