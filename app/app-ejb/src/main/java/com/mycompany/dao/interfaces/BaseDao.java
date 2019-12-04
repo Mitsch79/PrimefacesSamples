@@ -5,14 +5,14 @@ import java.util.Optional;
 
 public interface BaseDao<T> {
 	     
-	    Optional<T> get(long id);
+	    List<T> loadAll();
 	     
-	    List<T> getAll();
+	    void save(T entity);
 	     
-	    void save(T t);
+	    void update(T entity);
 	     
-	    void update(T t, String[] params);
-	     
-	    void delete(T t);
+	    void delete(T entity);
+
+		Optional<T> loadById(Class<T> persistenceClass, long id);
 		
 }
