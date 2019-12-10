@@ -1,48 +1,60 @@
 package com.mycompany.dao.impl;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
-import com.mycompany.dao.interfaces.BaseDao;
+import com.mycompany.dao.interfaces.DaoAccess;
 
-public class BaseDaoImpl<T> implements BaseDao<T> {
+@Named
+@Dependent
+public class BaseDaoImpl<T> implements DaoAccess<T>,Serializable {
 	
-	@PersistenceUnit(name = "oraclePersistenceUnit")
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9167809068818895581L;
+	@PersistenceContext(unitName="oraclePersistenceUnit")
 	private EntityManager entityManager;
 	
 	@Override
-	public final Optional<T> loadById(Class<T> persistenceClass, long id) {
+	public Optional<T> loadById(Class<T> persistenceClass, long id) {
 		return  Optional.ofNullable(entityManager.find(persistenceClass, id));
 	}
-
+	
+	
 	@Override
-	public List<T> loadAll() {
-		Class<T> entityClass = null;
+	public List<T> loadAll(Class<T> entityClass) {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();		 
-		CriteriaQuery<T> criteria = builder.createQuery(entityClass);
-		criteria.select(criteria.from(entityClass));
-		return entityManager.createQuery(criteria).getResultList();
+		CriteriaQuery<T> query = builder.createQuery(entityClass);
+		query.select(query.from(entityClass));
+		return entityManager.createQuery(query).getResultList();
 	}
 
 	@Override
-	public final void save(T entity) {
+	public void save(T entity) {
 		executeInsideTransaction(entityManager -> entityManager.persist(entityManager.merge(entity)));		
 	}
 
 	@Override
-	public final void update(T entity) {
+	public void update(T entity) {
 		executeInsideTransaction(entityManager -> entityManager.merge(entity));		
 	}
 
 	@Override
-	public final void delete(T entity) {
+	public void delete(T entity) {
 		executeInsideTransaction(entityManager -> entityManager.remove(entity));	
 	}
 	

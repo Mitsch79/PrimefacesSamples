@@ -2,32 +2,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<title>PrimeFaces Hello World Example</title>
 </h:head>
 
 <h:body>
+	<f:facet name="last">
+		<h:outputStylesheet name="css/theme.css" />
+		<h:outputStylesheet name="css/components.css" />
+	</f:facet>
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="auto" header="Header"
+			resizable="false" closable="false" collapsible="false">
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="auto" header="Navigation"
+			resizable="false" closable="false" collapsible="false" >
+			<h:form id="menuForm">
+				<p:menu toggleable="true">
+					<p:submenu label="Ajax">
+						<p:menuitem value="Save" action="#{menuView.save}"
+							icon="pi pi-save" />
+						<p:menuitem value="Update" action="#{menuView.update}"
+							icon="pi pi-refresh" />
+					</p:submenu>
+					<p:submenu label="Non-Ajax">
+						<p:menuitem value="Delete" action="#{menuView.delete}"
+							ajax="false" icon="pi pi-times" />
+					</p:submenu>
+					<p:submenu label="Navigations">
+						<p:menuitem value="External" url="http://www.primefaces.org"
+							icon="pi pi-home" />
+						<p:menuitem value="Internal" icon="pi pi-star" />
+					</p:submenu>
+					<p:submenu label="Das ist ein ganz ganz langer Text, mal sehen, was daraus wird">
+						<p:menuitem value="External" url="http://www.primefaces.org"
+							icon="pi pi-home" />
+						<p:menuitem value="Internal" icon="pi pi-star" />
+					</p:submenu>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<h:form id="contentForm" prependId="false">
+				
+				<ui:include src="tagDataTable.xhtml"/>
+				
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="auto" header="Footer"
+			resizable="false" closable="false" collapsible="false">
+		</p:layoutUnit>
+	</p:layout>
 	
 	
-		<p:outputPanel style="border: 1px solid black;">
-			Header	
-		</p:outputPanel>
-		
-		<p:outputPanel>
-			<p:outputPanel layout="inline" style="border: 1px solid black;width:20%;">
-				Nav	
-			</p:outputPanel>
-			<p:outputPanel style="border: 1px  solid black;display:inline-block;width:90%;">
-				Cont	
-			</p:outputPanel>	
-		</p:outputPanel>
-		
-		<p:outputPanel style="border: 1px solid black;">
-			Footer	
-		</p:outputPanel>
-	
-	
+
+
 </h:body>
 </html>

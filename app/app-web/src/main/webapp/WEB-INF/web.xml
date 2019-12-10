@@ -7,6 +7,10 @@
 
 	<display-name>myapp</display-name>
 
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>none</param-value>
+	</context-param>
 
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -35,21 +39,10 @@
 		</exception-type>
 		<location>/index.xhtml</location>
 	</error-page>
+	<!-- <security-constraint> <web-resource-collection> <web-resource-name>myapp</web-resource-name> 
+		<url-pattern>/*</url-pattern> </web-resource-collection> <auth-constraint> 
+		<role-name>Manager</role-name> </auth-constraint> </security-constraint> 
+		<login-config> <auth-method>BASIC</auth-method> <realm-name>myrealm</realm-name> 
+		</login-config> <security-role> <role-name>Manager</role-name> </security-role> -->
 
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>myapp</web-resource-name>
-			<url-pattern>/*</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>Manager</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<login-config>
-		<auth-method>BASIC</auth-method>
-		<realm-name>myrealm</realm-name>
-	</login-config>
-	<security-role>
-		<role-name>Manager</role-name>
-	</security-role>
 </web-app>
