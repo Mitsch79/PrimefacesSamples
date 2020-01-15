@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ConversationScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import com.mycompany.entities.TestEntity;
 import com.mycompany.pojo.Tag;
 
 @Named
-@ConversationScoped
+@ViewScoped
 public class TestModel implements Serializable {
 
 	private static final long serialVersionUID = -3692509064429573696L;

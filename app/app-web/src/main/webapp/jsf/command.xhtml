@@ -8,8 +8,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<p:outputPanel id="commandBar" style="padding:5px;">
-		<p:commandButton value="Load" action="#{testController.init()}" update="selectTagsDataTable"/>
-		<p:commandButton value="Submit"  process="selectTagsDataTable" update="selectedTagsDataTable" />
+		<p:commandButton type="submit" value="Load" action="#{testController.init()}" update="selectTagsDataTable"/>
+		<p:commandButton type="submit" value="Submit"  process="selectTagsDataTable" update="selectedTagsDataTable" />
 	</p:outputPanel>
 
 </ui:composition>

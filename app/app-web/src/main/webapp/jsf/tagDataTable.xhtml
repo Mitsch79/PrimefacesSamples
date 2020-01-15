@@ -7,18 +7,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<p:outputPanel id="tagHeaderRowTablePanel" >
+	<p:outputPanel id="tagHeaderRowTablePanel">
 
 		<p:dataTable id="selectTagsDataTable" widgetVar="selectTagsDataTable"
 			var="tag" value="#{testModel.tagList}" style="width:50vw;"
 			selection="#{testModel.selectedTags}" rowKey="#{tag.id}"
-			sortBy="#{tag.superTypeName}" expandableRowGroups="true" >
-			<p:ajax event="rowSelect" process="@this" update="selectedTagsDataTable"/>
-			<p:ajax event="rowUnselect" process="@this" update="selectedTagsDataTable"/>
-			
+			sortBy="#{tag.superTypeName}" expandableRowGroups="true"
+			rowSelectMode="add">
+			<p:ajax event="rowSelect" update="selectedTagsDataTable" />
+			<p:ajax event="rowUnselect" update="selectedTagsDataTable" />
+			<p:ajax event="rowSelectCheckbox" update="selectedTagsDataTable" />
+			<p:ajax event="rowUnselectCheckbox" update="selectedTagsDataTable" />
+
 			<p:headerRow>
-				<p:column headerText="" width="60px" selectionMode="multiple" 
-				style="width:16px;text-align:center"  />
+				<p:column headerText="" width="60px" selectionMode="multiple"
+					style="width:16px;text-align:center" />
 				<p:column headerText="Bezeichnung">
 					<h:outputText value="#{tag.subTypeShort}" />
 				</p:column>
@@ -27,7 +30,7 @@
 				</p:column>
 			</p:headerRow>
 
-			<p:column selectionMode="multiple" 
+			<p:column selectionMode="multiple"
 				style="width:16px;text-align:center" />
 			<p:column>
 				<h:outputText value="#{tag.subTypeShort}" />
@@ -40,14 +43,13 @@
 
 
 	</p:outputPanel>
-	<p:spacer height="20"/>
+	<p:spacer height="20" />
 	<p:outputPanel id="selectedTagHeaderRowTablePanel">
 
 		<p:dataTable id="selectedTagsDataTable" style="width:50vw;"
 			widgetVar="selectedTagsDataTable" var="tag"
-			value="#{testModel.selectedTags}"
-			rowKey="#{tag.subTypeShort}" sortBy="#{tag.superTypeName}"
-			expandableRowGroups="true">
+			value="#{testModel.selectedTags}" rowKey="#{tag.subTypeShort}"
+			sortBy="#{tag.superTypeName}" expandableRowGroups="true">
 
 			<p:headerRow>
 				<p:column headerText="Bezeichnung">
