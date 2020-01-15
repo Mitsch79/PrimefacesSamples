@@ -17,7 +17,7 @@ public class TestModel implements Serializable {
 	private static final long serialVersionUID = -3692509064429573696L;
 	private TestEntity testEntiy;
 	private List<TestEntity> testEntityList;
-	private List<Tag> selectedTags = new ArrayList<>();
+	private List<Tag> selectedTags;
 	private List<Tag> tagList = new ArrayList<>();
 
 	public Long getId() {
@@ -47,6 +47,7 @@ public class TestModel implements Serializable {
 	public void init() {
 		testEntiy = new TestEntity();
 		testEntityList = new ArrayList<>();
+		tagList = new ArrayList<>();
 	}
 
 	public void setSelectedTags(List<Tag> selectedTags) {

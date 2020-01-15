@@ -1,6 +1,7 @@
 package com.mycompany.pojo;
 
 public class Tag {
+	private int id;
 	private String superTypeName;
 	private String superTypeDescription;
 	private String superTypeShort;
@@ -54,6 +55,14 @@ public class Tag {
 
 	public void setSuperTypeShort(String superTypeShort) {
 		this.superTypeShort = superTypeShort;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

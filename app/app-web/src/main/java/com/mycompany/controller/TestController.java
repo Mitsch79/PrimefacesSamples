@@ -6,8 +6,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.PrimeFaces;
-
 import com.mycompany.model.TestModel;
 import com.mycompany.pojo.Tag;
 import com.mycompany.pojo.TagList;
@@ -33,22 +31,26 @@ public class TestController implements Serializable {
 		int superTypeCount = 5;
 		int subTypeCount = 5;
 
-		for (int i = 0; i < superTypeCount; i++) {
+		for (int i = 0; i < superTypeCount; ++i) {
 			Tag superType = new Tag();
+			superType.setId(i + 1);
 			superType.setSubTypeDescription("Description " + i);
-			superType.setSubTypeName("SubTypeName " + i);
-			superType.setSubTypeShort("SubTypeShort " + i);
+			superType.setSubTypeName("SuperTypeName " + i);
+			superType.setSubTypeShort("SuperTypeShort " + i);
 			superType.setSuperTypeDescription("SuperTypeDescription " + i);
 			superType.setSuperTypeName("SuperTypeName " + i);
 			superType.setSuperTypeShort("SuperTypeShort " + i);
-			for (int ii = 0; ii < subTypeCount; i++) {
+			tagList.getTagList().add(superType);
+			for (int j = 0; j < subTypeCount; ++j) {
 				Tag subType = new Tag();
-				subType.setSubTypeDescription("SubTypeDescription " + i + "." + ii);
-				subType.setSubTypeName("SubTypeName " + i + "." + ii);
-				subType.setSubTypeShort("SubTypeShort " + i + "." + ii);
+				subType.setId(100 * (i + 1) + j);
+				subType.setSubTypeDescription("SubTypeDescription " + i + "." + j);
+				subType.setSubTypeName("SubTypeName " + i + "." + j);
+				subType.setSubTypeShort("SubTypeShort " + i + "." + j);
 				subType.setSuperTypeDescription(superType.getSuperTypeDescription());
 				subType.setSuperTypeName(superType.getSuperTypeName());
 				subType.setSuperTypeShort(superType.getSubTypeShort());
+				tagList.getTagList().add(subType);
 			}
 		}
 
@@ -59,8 +61,5 @@ public class TestController implements Serializable {
 		testModel.init();
 		testModel.setTagList(generateTagList().getTagList());
 		testModel.setTestList(testService.loadAll());
-
-		PrimeFaces.current().executeScript("PF('selectTagsDataTable').filter();");
-
 	}
 }
