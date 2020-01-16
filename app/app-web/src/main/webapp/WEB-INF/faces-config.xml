@@ -5,12 +5,25 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
               http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 	<navigation-rule>
-		<from-view-id>/index.xhtml</from-view-id>
+		<description>Home</description>
+		<display-name>Home</display-name>
+		<from-view-id/>
 		<navigation-case>
-			<from-action>#{loginController.login}</from-action>
-			<from-outcome>loggedin</from-outcome>
-			<to-view-id>/jsf/test.xhtml</to-view-id>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/jsf/home/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<description>DataTable SelectionTest</description>
+		<display-name>DataTable Selection</display-name>
+		<from-view-id/>
+		<navigation-case>
+			<from-outcome>dtSelectionTest</from-outcome>
+			<to-view-id>/jsf/datatable/selectiontest.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

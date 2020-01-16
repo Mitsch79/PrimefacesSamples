@@ -13,6 +13,6 @@ public class LoginController {
 
 	public String login() {
 		testController.init();
-		return "loggedin";
+		return "home";
 	}
 }

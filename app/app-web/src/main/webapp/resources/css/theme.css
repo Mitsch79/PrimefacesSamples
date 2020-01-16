@@ -43,7 +43,16 @@ th.ui-state-default {
     color: #4f4f4f
 }
 
-.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default {
+.ui-menu-list li.ui-widget-header {
+	background-color: gray;
+	color: white;
+}
+
+.ui-menu-list li.ui-widget-header ui-icon {
+	color: white;
+}
+
+.ui-menuitem,.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default {
     border: 1px solid #a8a8a8;
     background: #c6ddff;
     font-weight: bold;
