@@ -26,4 +26,15 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<description>requiredTest</description>
+		<display-name>requiredTest</display-name>
+		<from-view-id/>
+		<navigation-case>
+			<from-outcome>requiredTest</from-outcome>
+			<to-view-id>/jsf/requiredTest/requiredTest.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

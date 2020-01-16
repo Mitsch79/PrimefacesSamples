@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import com.mycompany.entities.TestEntity;
 import com.mycompany.pojo.Tag;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class TestModel implements Serializable {
 
 	private static final long serialVersionUID = -3692509064429573696L;
@@ -20,12 +20,23 @@ public class TestModel implements Serializable {
 	private List<Tag> selectedTags;
 	private List<Tag> tagList = new ArrayList<>();
 
+	private String inputValue;
+	private String selectedValue;
+
 	public Long getId() {
 		return testEntiy.getId();
 	}
 
+	public String getInputValue() {
+		return inputValue;
+	}
+
 	public List<Tag> getSelectedTags() {
 		return selectedTags;
+	}
+
+	public String getSelectedValue() {
+		return selectedValue;
 	}
 
 	public List<Tag> getTagList() {
@@ -50,8 +61,16 @@ public class TestModel implements Serializable {
 		tagList = new ArrayList<>();
 	}
 
+	public void setInputValue(String inputValue) {
+		this.inputValue = inputValue;
+	}
+
 	public void setSelectedTags(List<Tag> selectedTags) {
 		this.selectedTags = selectedTags;
+	}
+
+	public void setSelectedValue(String selectedValue) {
+		this.selectedValue = selectedValue;
 	}
 
 	public void setTagList(List<Tag> tagList) {
