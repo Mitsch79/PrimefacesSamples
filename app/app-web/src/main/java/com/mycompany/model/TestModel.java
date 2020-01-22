@@ -7,6 +7,7 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import com.mycompany.entities.LandCodeEntity;
 import com.mycompany.entities.TestEntity;
 import com.mycompany.pojo.Tag;
 
@@ -19,6 +20,7 @@ public class TestModel implements Serializable {
 	private List<TestEntity> testEntityList;
 	private List<Tag> selectedTags;
 	private List<Tag> tagList = new ArrayList<>();
+	private List<LandCodeEntity> landList;
 
 	private String inputValue;
 	private String selectedValue;
@@ -39,6 +41,10 @@ public class TestModel implements Serializable {
 
 	public String getInputValue() {
 		return inputValue;
+	}
+
+	public List<LandCodeEntity> getLandList() {
+		return landList;
 	}
 
 	public List<Tag> getSelectedTags() {
@@ -81,6 +87,10 @@ public class TestModel implements Serializable {
 
 	public void setInputValue(String inputValue) {
 		this.inputValue = inputValue;
+	}
+
+	public void setLandList(List<LandCodeEntity> landList) {
+		this.landList = landList;
 	}
 
 	public void setSelectedTags(List<Tag> selectedTags) {

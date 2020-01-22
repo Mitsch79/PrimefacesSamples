@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="../layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<script>
+			function setIndirectFieldValue(srcWwidgetVar, trgtWidgetVar,
+					srcAttribut) {
+				PF(trgtWidgetVar).getJQ().val(
+						PF(srcWwidgetVar).getActiveItem().attr(srcAttribut));
+				PF(trgtWidgetVar + '_hidden').getJQ().val(
+						PF(srcWwidgetVar).getActiveItem().attr(srcAttribut));
+			}
+		</script>
+		<p:outputPanel id="contentPanel">
+
+			<p:panelGrid columns="2">
+
+				<p:commandButton type="submit" value="Load"
+					action="#{testController.init()}" update="selectMenue" />
+				<p:commandButton type="submit" value="Submit" process="contentPanel"
+					update="contentPanel" />
+
+			</p:panelGrid>
+
+			<p:panelGrid id="selectPanel" columns="4">
+
+				<p:outputLabel for="selectMenue" value="UpdateSource"
+					style="margin-right:15px" />
+				<p:selectOneMenu id="selectMenue" value="#{testModel.selectedValue}"
+					widgetVar="selectMenue"
+					onchange="setIndirectFieldValue('selectMenue','inputValue','title')">
+					<f:selectItem itemLabel="Select One" itemValue=""
+						itemDescription="Select One" />
+					<f:selectItems value="#{testModel.landList}" var="land"
+						itemLabel="#{land.landName}" itemValue="#{land.landName}"
+						itemDescription="#{land.landIso}" />
+				</p:selectOneMenu>
+
+				<p:outputPanel id="landIsoCombo">
+					<p:inputText value="#{testModel.inputValue}" widgetVar="inputValue"
+						disabled="true">
+						<p:outputLabel value="UpdateTarget" style="margin-right:15px" />
+					</p:inputText>
+
+					<p:inputText value="#{testModel.inputValue}"
+						widgetVar="inputValue_hidden" style="display: none;">
+					</p:inputText>
+				</p:outputPanel>
+
+			</p:panelGrid>
+
+			<p:panelGrid id="outputPanel2">
+				<p:outputPanel style="padding:10px">
+					Result:<br />
+					-------<br />
+					Source: #{testModel.selectedValue}<br />
+					Target: #{testModel.inputValue} <br />
+
+				</p:outputPanel>
+			</p:panelGrid>
+
+		</p:outputPanel>
+	</ui:define>
+</ui:composition>

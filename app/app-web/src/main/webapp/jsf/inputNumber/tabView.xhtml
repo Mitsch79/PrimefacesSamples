@@ -9,9 +9,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<ui:define name="content">
-		<p:panelGrid>
+		<p:outputPanel id="tabViewPanel">
 
-			<p:panelGrid columns="4">
+			<p:panelGrid columns="4" style="width:100%">
 				<p:outputLabel id="labelInputText3" for="inputText3"
 					value="Input Text 3" />
 				<p:inputText id="inputText3" value="#{testModel.inputValue}" />
@@ -22,23 +22,23 @@
 
 			<p:spacer height="10" />
 
+			<p:panelGrid columns="1" style="width:100%">
+				<p:outputPanel id="contentPanel">
+					<p:tabView id="inputNumberTabView" prependId="false">
+	
+						<p:tab id="inputNumberTab1" title="InputNumber1">
+							<ui:include src="inputFields.xhtml" />
+						</p:tab>
+	
+						<p:tab id="inputNumberTab2" title="InputNumber2">
+							<ui:include src="../datatable/command.xhtml" />
+							<ui:include src="../datatable/tagDataTable.xhtml" />
+						</p:tab>
+	
+					</p:tabView>
+				</p:outputPanel>
+			</p:panelGrid>
 
-			<p:outputPanel id="contentPanel">
-				<p:tabView id="inputNumberTabView" prependId="false">
-
-					<p:tab id="inputNumberTab1" title="InputNumber1">
-						<ui:include src="inputFields.xhtml" />
-					</p:tab>
-
-					<p:tab id="inputNumberTab2" title="InputNumber2">
-						<ui:include src="../datatable/command.xhtml" />
-						<ui:include src="../datatable/tagDataTable.xhtml" />
-					</p:tab>
-
-				</p:tabView>
-			</p:outputPanel>
-
-
-		</p:panelGrid>
+		</p:outputPanel>
 	</ui:define>
 </ui:composition>

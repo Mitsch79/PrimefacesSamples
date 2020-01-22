@@ -9,21 +9,28 @@
 
 
 	<p:outputPanel id="inputFields">
+		<div id="plainDiv" class="ui-g ui-label">
+		
+			<h:panelGroup id="tabFieldGrid" class="ui-g-3 ui-sm-12 ui-md-6 ui-lg-3">
 
-		<p:panelGrid id="tabFieldGrid" columns="4">
+				<p:inputNumber id="inputNumber1" value="#{testModel.inputNumber1}"
+					decimalPlaces="2" minValue="0" maxValue="9999.99">
+					<p:outputLabel id="labelInputNumber1" value="Input Number 1" />
+					<p:tooltip value="Tooltip" />
+				</p:inputNumber>
 
-			<p:inputNumber id="inputNumber1" value="#{testModel.inputNumber1}"
-				decimalPlaces="2" minValue="0" maxValue="9999.99" maxlength="4"
-				size="4">
-				<p:outputLabel id="labelInputNumber1" value="Input Number 1" />
-				<p:tooltip value="Tooltip" />
-			</p:inputNumber>
+			</h:panelGroup>
+			
+			<h:panelGroup id="tabFieldGrid2" class="ui-g-3 ui-sm-12 ui-md-6 ui-lg-3">
+				
+				<p:inputText id="inputText1" value="#{testModel.inputValue}">
+					<p:outputLabel id="labelInputText1" value="Input Text 1" />
+				</p:inputText>
 
-			<p:inputText id="inputText1" value="#{testModel.inputValue}">
-				<p:outputLabel id="labelInputText1" value="Input Text 1" />
-			</p:inputText>
-		</p:panelGrid>
-
+			</h:panelGroup>
+			
+			
+		</div>
 	</p:outputPanel>
 
 

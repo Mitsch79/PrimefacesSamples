@@ -9,6 +9,7 @@ import javax.inject.Named;
 import com.mycompany.model.TestModel;
 import com.mycompany.pojo.Tag;
 import com.mycompany.pojo.TagList;
+import com.mycompany.services.LandService;
 import com.mycompany.services.TestService;
 
 @Named
@@ -25,6 +26,9 @@ public class TestController implements Serializable {
 
 	@Inject
 	private TestService testService;
+
+	@Inject
+	private LandService landService;
 
 	private TagList generateTagList() {
 		TagList tagList = new TagList();
@@ -61,5 +65,6 @@ public class TestController implements Serializable {
 		testModel.init();
 		testModel.setTagList(generateTagList().getTagList());
 		testModel.setTestList(testService.loadAll());
+		testModel.setLandList(landService.loadAll());
 	}
 }

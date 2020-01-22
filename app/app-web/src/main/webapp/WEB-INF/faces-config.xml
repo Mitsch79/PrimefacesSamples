@@ -36,6 +36,7 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	
 	<navigation-rule>
 		<description>inputNumberTabViewTest</description>
 		<display-name>inputNumberTabViewTest</display-name>
@@ -43,6 +44,17 @@
 		<navigation-case>
 			<from-outcome>inputNumberTabViewTest</from-outcome>
 			<to-view-id>/jsf/inputNumber/tabView.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<description>selectOneMenue</description>
+		<display-name>selectOneMenueTest</display-name>
+		<from-view-id/>
+		<navigation-case>
+			<from-outcome>selectOneMenue</from-outcome>
+			<to-view-id>/jsf/selectOneMenue/selectOneMenue.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
