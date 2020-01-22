@@ -22,9 +22,19 @@ public class TestModel implements Serializable {
 
 	private String inputValue;
 	private String selectedValue;
+	private Integer inputNumber1;
+	private Integer inputNumber2;
 
 	public Long getId() {
 		return testEntiy.getId();
+	}
+
+	public Integer getInputNumber1() {
+		return inputNumber1;
+	}
+
+	public Integer getInputNumber2() {
+		return inputNumber2;
 	}
 
 	public String getInputValue() {
@@ -59,6 +69,14 @@ public class TestModel implements Serializable {
 		testEntiy = new TestEntity();
 		testEntityList = new ArrayList<>();
 		tagList = new ArrayList<>();
+	}
+
+	public void setInputNumber1(Integer inputNumber1) {
+		this.inputNumber1 = inputNumber1;
+	}
+
+	public void setInputNumber2(Integer inputNumber2) {
+		this.inputNumber2 = inputNumber2;
 	}
 
 	public void setInputValue(String inputValue) {

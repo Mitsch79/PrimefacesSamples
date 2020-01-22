@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<p:outputPanel id="inputFields2">
+		
+		<p:panelGrid id="tabFieldGrid2" columns="4">
+			<p:outputLabel id="labelInputNumber2"
+				for="inputNumber2" value="Input Number 2" />
+			<p:inputNumber id="inputNumber2"
+				value="#{testModel.inputNumber1}" decimalPlaces="0" minValue="0"
+				maxValue="9999" emptyValue="empty" maxlength="4" size="4">
+				<p:tooltip for="inputNumber2" value="Tooltip" />
+			</p:inputNumber>
+			<p:outputLabel id="labelInputText2"
+				for="inputText2" value="Input Text 2" />
+			<p:inputText id="inputText2"
+				value="#{testModel.inputValue}" />			
+		</p:panelGrid>
+
+	</p:outputPanel>
+		
+	
+</ui:composition>

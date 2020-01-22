@@ -36,5 +36,15 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<description>inputNumberTabViewTest</description>
+		<display-name>inputNumberTabViewTest</display-name>
+		<from-view-id/>
+		<navigation-case>
+			<from-outcome>inputNumberTabViewTest</from-outcome>
+			<to-view-id>/jsf/inputNumber/tabView.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 	
 </faces-config>

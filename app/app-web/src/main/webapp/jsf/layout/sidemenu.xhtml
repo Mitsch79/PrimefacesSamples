@@ -10,7 +10,7 @@
 	<h:form id="menuForm">
 		<p:menu toggleable="true">
 			<p:menuitem value="Home" outcome="home" icon="pi pi-save" style="font-weight:bold;"/>
-			<p:submenu label="DataTable">
+			<p:submenu label="DataTable" styleClass="fa fa-caret-right">
 				<p:menuitem value="DataTable Selection" outcome="dtSelectionTest"
 					icon="pi pi-save" />
 			</p:submenu>
@@ -18,17 +18,11 @@
 				<p:menuitem value="requiredTest" outcome="requiredTest"
 					icon="pi pi-times" />
 			</p:submenu>
-			<p:submenu label="Navigations">
-				<p:menuitem value="External" url="http://www.primefaces.org"
-					icon="pi pi-home" />
-				<p:menuitem value="Internal" icon="pi pi-star" />
+			<p:submenu label="InputNumber Tests">
+				<p:menuitem value="tabView Test" outcome="inputNumberTabViewTest"
+					icon="pi pi-times" />
 			</p:submenu>
-			<p:submenu
-				label="Das ist ein ganz ganz langer Text, mal sehen, was daraus wird">
-				<p:menuitem value="External" url="http://www.primefaces.org"
-					icon="pi pi-home" />
-				<p:menuitem value="Internal" icon="pi pi-star" />
-			</p:submenu>
+			
 		</p:menu>
 	</h:form>
 

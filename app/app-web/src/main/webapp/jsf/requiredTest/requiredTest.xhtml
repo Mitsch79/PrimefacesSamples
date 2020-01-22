@@ -23,7 +23,7 @@
 					<f:selectItem itemLabel="PS4" itemValue="PS4 required" />
 					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
 					<f:selectItem itemLabel="C64" itemValue="C64 required" />
-					<p:ajax update="contentPanel" process="@this,inputField"/>
+					<p:ajax update="contentPanel" process="contentPanel"/>
 				</p:selectOneMenu>
 				
 				<p:outputLabel id="labelForInputField" for="inputField" value="InputField" indicateRequired="#{isRequired}"/>

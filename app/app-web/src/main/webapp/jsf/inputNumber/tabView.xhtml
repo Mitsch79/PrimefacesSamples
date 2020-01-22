@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="../layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<p:panelGrid>
+
+			<p:panelGrid columns="4">
+				<p:outputLabel id="labelInputText3" for="inputText3"
+					value="Input Text 3" />
+				<p:inputText id="inputText3" value="#{testModel.inputValue}" />
+				<p:outputLabel id="labelInputText4" for="inputText4"
+					value="Input Text 4" />
+				<p:inputText id="inputText4" value="#{testModel.inputValue}" />
+			</p:panelGrid>
+
+			<p:spacer height="10" />
+
+
+			<p:outputPanel id="contentPanel">
+				<p:tabView id="inputNumberTabView" prependId="false">
+
+					<p:tab id="inputNumberTab1" title="InputNumber1">
+						<ui:include src="inputFields.xhtml" />
+					</p:tab>
+
+					<p:tab id="inputNumberTab2" title="InputNumber2">
+						<ui:include src="../datatable/command.xhtml" />
+						<ui:include src="../datatable/tagDataTable.xhtml" />
+					</p:tab>
+
+				</p:tabView>
+			</p:outputPanel>
+
+
+		</p:panelGrid>
+	</ui:define>
+</ui:composition>
