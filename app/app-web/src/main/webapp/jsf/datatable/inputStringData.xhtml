@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<p:outputPanel id="inputStringDataPanel">
+
+		<p:panelGrid id="nputStringDataGrid" columns="3">
+			<p:inputText id="inputStringDataText1"
+				value="#{testModel.dataTableViewData.text1}">
+				<p:outputLabel value="Text 1" />
+			</p:inputText>
+			<p:inputText id="inputStringDataText2"
+				value="#{testModel.dataTableViewData.text2}">
+				<p:outputLabel value="Text 2" />
+			</p:inputText>
+			<p:inputText id="inputStringDataText3" 
+				value="#{testModel.dataTableViewData.text3}" required="#{not empty param[submitButton.clientId]}"
+				requiredMessage="Text 3 darf nicht leer sein." >
+				<p:outputLabel value="Text 3" indicateRequired="true"/>
+			</p:inputText>
+		</p:panelGrid>
+	</p:outputPanel>
+
+</ui:composition>

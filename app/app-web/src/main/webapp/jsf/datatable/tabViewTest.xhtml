@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="../layout/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+	
+	<p:outputPanel id="editDataTableTabView">
+		
+		<p:outputPanel id="commandBar" style="padding:5px;">
+			<p:commandButton value="Init" action="#{testController.init()}" update="editDataTableTabView"/>
+			<p:commandButton value="Submit"  process="editDataTableTabView" update="messages" binding="#{submitButton}"/>
+		</p:outputPanel>
+		
+		<p:outputPanel id="dtTabViewPanel">
+			<p:tabView id="tabViewEditableDatatable" rendered="#{testModel.isInputDatainitialized()}">
+				
+				<p:tab id="inputTab" title="Input Felder">
+					<ui:include src="inputStringData.xhtml" />
+				</p:tab>
+				
+				<p:tab id="datatableTab" title="EditableDataTable">
+					<ui:include src="editDataTable.xhtml" />
+				</p:tab>
+				
+			</p:tabView>
+		</p:outputPanel>
+	
+	</p:outputPanel>
+	
+	</ui:define>
+</ui:composition>

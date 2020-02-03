@@ -27,6 +27,17 @@
 	</navigation-rule>
 	
 	<navigation-rule>
+		<description>Edit DataTable TabViewTest</description>
+		<display-name>Edit DataTable TabView</display-name>
+		<from-view-id/>
+		<navigation-case>
+			<from-outcome>dtTabViewTest</from-outcome>
+			<to-view-id>/jsf/datatable/tabViewTest.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
 		<description>requiredTest</description>
 		<display-name>requiredTest</display-name>
 		<from-view-id/>

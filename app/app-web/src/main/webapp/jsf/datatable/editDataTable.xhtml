@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<p:outputPanel id="editableDataTablePanel">
+
+		<p:dataTable id="editableDataTable" widgetVar="editableDataTable"
+			var="entry" value="#{testModel.dataTableViewData.entryList}" style="width:50vw;" rowIndexVar="index"
+			rowKey="#{entry}" >
+			
+
+			<f:facet name="header">
+				<p:column colspan="3" width="60px" style="text-align:left;">
+					<p:commandButton value="Add Entry" action="#{testController.addEditableListEntry()}" update="editableDataTable"/>
+				</p:column>
+			</f:facet>>
+
+			<p:column style="width:100px">
+				<p:commandButton value="Remove Entry" action="#{testController.removeEditableListEntry(index)}" update="editableDataTable"/>
+			</p:column>				
+			<p:column style="padding:10px">
+				<p:inputTextarea value="#{entry.text1}" style="width:97%" rows="5"/>
+			</p:column>
+			<p:column style="padding:10px">
+				<p:inputTextarea value="#{entry.text2}" style="width:97%" rows="5" required="#{not empty param[submitButton.clientId]}"/>
+			</p:column>
+
+		</p:dataTable>
+
+
+	</p:outputPanel>
+	
+</ui:composition>

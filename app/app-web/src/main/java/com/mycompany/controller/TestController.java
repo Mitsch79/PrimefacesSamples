@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.mycompany.model.TestModel;
+import com.mycompany.pojo.EditableListEntry;
 import com.mycompany.pojo.Tag;
 import com.mycompany.pojo.TagList;
 import com.mycompany.services.LandService;
@@ -29,6 +30,10 @@ public class TestController implements Serializable {
 
 	@Inject
 	private LandService landService;
+
+	public void addEditableListEntry() {
+		testModel.getDataTableViewData().getEntryList().add(0, new EditableListEntry());
+	}
 
 	private TagList generateTagList() {
 		TagList tagList = new TagList();
@@ -63,8 +68,14 @@ public class TestController implements Serializable {
 
 	public void init() {
 		testModel.init();
+		// testModel.getDataTableViewData().getEntryList().add(0, new
+		// EditableListEntry());
 		testModel.setTagList(generateTagList().getTagList());
 		testModel.setTestList(testService.loadAll());
 		testModel.setLandList(landService.loadAll());
+	}
+
+	public void removeEditableListEntry(int index) {
+		testModel.getDataTableViewData().getEntryList().remove(index);
 	}
 }
