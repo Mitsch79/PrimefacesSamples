@@ -10,6 +10,7 @@ import javax.inject.Named;
 import com.mycompany.entities.LandCodeEntity;
 import com.mycompany.entities.TestEntity;
 import com.mycompany.pojo.InputStringData;
+import com.mycompany.pojo.MenuHierarchie;
 import com.mycompany.pojo.Tag;
 
 @Named
@@ -28,6 +29,8 @@ public class TestModel implements Serializable {
 	private String selectedValue;
 	private Integer inputNumber1;
 	private Integer inputNumber2;
+
+	private MenuHierarchie menuHierarchie;
 
 	public InputStringData getDataTableViewData() {
 		return dataTableViewData;
@@ -51,6 +54,10 @@ public class TestModel implements Serializable {
 
 	public List<LandCodeEntity> getLandList() {
 		return landList;
+	}
+
+	public MenuHierarchie getMenuHierarchie() {
+		return menuHierarchie;
 	}
 
 	public List<Tag> getSelectedTags() {
@@ -114,6 +121,10 @@ public class TestModel implements Serializable {
 
 	public void setLandList(List<LandCodeEntity> landList) {
 		this.landList = landList;
+	}
+
+	public void setMenuHierarchie(MenuHierarchie menuHierarchie) {
+		this.menuHierarchie = menuHierarchie;
 	}
 
 	public void setSelectedTags(List<Tag> selectedTags) {

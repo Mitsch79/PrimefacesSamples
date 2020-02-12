@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import com.mycompany.model.TestModel;
 import com.mycompany.pojo.EditableListEntry;
+import com.mycompany.pojo.MenuHierarchie;
 import com.mycompany.pojo.Tag;
 import com.mycompany.pojo.TagList;
 import com.mycompany.services.LandService;
@@ -33,6 +34,36 @@ public class TestController implements Serializable {
 
 	public void addEditableListEntry() {
 		testModel.getDataTableViewData().getEntryList().add(0, new EditableListEntry());
+	}
+
+	public MenuHierarchie generateMenuHierarchie() {
+		MenuHierarchie rootEntry = new MenuHierarchie();
+		rootEntry.setRootEntry(rootEntry);
+		rootEntry.setLevel(0);
+		generateMenuHierarchie(rootEntry, 4, 4);
+		return rootEntry;
+	}
+
+	public void generateMenuHierarchie(MenuHierarchie parentEntry, int maxDepth, int entriesPerLevel) {
+
+		if (maxDepth > 0)
+			for (int i = 1; i <= entriesPerLevel; i++) {
+				MenuHierarchie newEntry = new MenuHierarchie();
+				newEntry.setRootEntry(parentEntry.getRootEntry());
+				newEntry.setLevel(parentEntry.getLevel() + 1);
+				newEntry.setParentEntry(parentEntry);
+				if (parentEntry.getEntryTitle() != null)
+					newEntry.setEntryTitle(parentEntry.getEntryTitle() + "." + i);
+				else
+					newEntry.setEntryTitle("Eintrag " + i);
+				if (parentEntry.getEntryOutcome() != null)
+					newEntry.setEntryOutcome(parentEntry.getEntryOutcome() + "." + i);
+				else
+					newEntry.setEntryOutcome("Outcome " + i);
+
+				generateMenuHierarchie(newEntry, maxDepth - 1, 4);
+				parentEntry.getChildEntries().add(newEntry);
+			}
 	}
 
 	private TagList generateTagList() {
@@ -73,6 +104,7 @@ public class TestController implements Serializable {
 		testModel.setTagList(generateTagList().getTagList());
 		testModel.setTestList(testService.loadAll());
 		testModel.setLandList(landService.loadAll());
+		testModel.setMenuHierarchie(generateMenuHierarchie());
 	}
 
 	public void removeEditableListEntry(int index) {
