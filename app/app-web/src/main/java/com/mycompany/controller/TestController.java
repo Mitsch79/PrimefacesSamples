@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.mycompany.model.MenuView;
 import com.mycompany.model.TestModel;
 import com.mycompany.pojo.EditableListEntry;
 import com.mycompany.pojo.MenuHierarchie;
@@ -22,6 +23,9 @@ public class TestController implements Serializable {
 	 *
 	 */
 	private static final long serialVersionUID = 1229544450575272466L;
+
+	@Inject
+	MenuView menuView;
 
 	@Inject
 	private TestModel testModel;
@@ -104,7 +108,7 @@ public class TestController implements Serializable {
 		testModel.setTagList(generateTagList().getTagList());
 		testModel.setTestList(testService.loadAll());
 		testModel.setLandList(landService.loadAll());
-		testModel.setMenuHierarchie(generateMenuHierarchie());
+		menuView.init(generateMenuHierarchie());
 	}
 
 	public void removeEditableListEntry(int index) {

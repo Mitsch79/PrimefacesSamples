@@ -13,6 +13,7 @@ public class MenuHierarchie {
 	String entryTitle;
 	String entryOutcome;
 	int level;
+	int maxLevel;
 
 	public List<MenuHierarchie> getChildEntries() {
 		return childEntries;
@@ -28,6 +29,10 @@ public class MenuHierarchie {
 
 	public int getLevel() {
 		return level;
+	}
+
+	public int getMaxLevel() {
+		return maxLevel;
 	}
 
 	public MenuHierarchie getParentEntry() {
@@ -68,6 +73,10 @@ public class MenuHierarchie {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public void setMaxLevel(int maxLevel) {
+		this.maxLevel = maxLevel;
 	}
 
 	public void setParentEntry(MenuHierarchie parentEntry) {

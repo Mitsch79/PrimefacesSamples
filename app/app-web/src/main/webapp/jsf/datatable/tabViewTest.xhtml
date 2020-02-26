@@ -18,7 +18,7 @@
 		</p:outputPanel>
 		
 		<p:outputPanel id="dtTabViewPanel">
-			<p:tabView id="tabViewEditableDatatable" rendered="#{testModel.isInputDatainitialized()}">
+			<p:tabView id="tabViewEditableDatatable" rendered="#{testModel.inputDatainitialized}">
 				
 				<p:tab id="inputTab" title="Input Felder">
 					<ui:include src="inputStringData.xhtml" />

@@ -14,6 +14,7 @@
 	<f:facet name="last">
 		<h:outputStylesheet name="css/theme.css" />
 		<h:outputStylesheet name="css/components.css" />
+		<h:outputStylesheet name="css/custom.css" />
 	</f:facet>
 
 	<p:layout fullPage="true">
@@ -31,8 +32,8 @@
 			<ui:include src="sidemenu.xhtml"/>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="center">
-			<h:form id="contentForm" prependId="false">
+		<p:layoutUnit position="center" style="padding:0px;overflow:auto;height:100%;">
+			<h:form id="contentForm" prependId="false" style="height:100%;">
 				
 				<ui:insert name="content"/>
 				

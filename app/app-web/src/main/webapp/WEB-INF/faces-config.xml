@@ -70,4 +70,15 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<description>MenuBarTest</description>
+		<display-name>menuBarTest</display-name>
+		<from-view-id/>
+		<navigation-case>
+			<from-outcome>menuBarTest</from-outcome>
+			<to-view-id>/jsf/menuBar/menuBarTest.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>
