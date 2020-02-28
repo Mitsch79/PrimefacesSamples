@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<ui:composition template="../layout/layout.xhtml"
+<ui:composition
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
@@ -9,108 +9,65 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-	<ui:define name="content">
-		<f:event listener="#{testController.init}" type="preRenderView" />
-		
-			<!-- custom menubar -->
-			<p:outputPanel id="menuBar">
-				<ui:repeat id="menu" value="#{menuView.menuModel.elements}"
-					var="menuModel" varStatus="status">
-					<p:outputPanel id="menuItemWrapper">
-						<p:commandLink id="rootLink" styleClass="rpfMenuItem" value="#{menuModel.label}"/>
-						<p:outputPanel id="menuPanel" widgetVar="menuPanel"
-							appendTo="contentPanel" styleClass="menuOverlayLevel1"
-							onHide="PF('menuPanel').jq.slideUp(100);" hideEvent="mouseleave">
-							<ui:include name="#{menuModel.label}" src="menuPanel.xhtml">
-								<ui:param name="menuItem" value="#{menuModel}"/>
-							</ui:include>
-						</p:outputPanel>
-					</p:outputPanel>
-				</ui:repeat>
-			</p:outputPanel>
 	
-		<p:outputPanel style="margin:0px 30px 15px 30px;background: #d3e0ff;height:100%;display:block;">
-			<h:outputText value="someContent" />
-		</p:outputPanel>
-	<script>
-		//<![CDATA[
-			
-		$(document).ready(function(){
-			var menuItemWrappers = $('div[id$="menuItemWrapper"]');
-			var menuPanels = $('div#menuBar div[id$=menuPanel]');
- 			var menuItems = $('.rpfMenuItem');
- 			
-			menuPanels.startTimeout = function() {	
-				menuPanels.hideTimeout =
-				setTimeout(function () {
-					menuPanels.slideUp(200);
-					menuPanels.removeClass('menu-active-state')
-				}, 1000);
-			}
-			
-			menuPanels.stopTimeout = function stopTimeout() {
-				clearTimeout(this.hideTimeout);
-			}
-			
-			menuItems.on('keyup mouseenter focus', function(e) {
-				var panel = $(this).siblings('div[id$=menuPanel]');
-				menuPanels.stopTimeout();
-				if (e.which == $.ui.keyCode.SPACE ||e.which == $.ui.keyCode.ENTER || e.which == 0 || e.type == "focus") {
-					if (menuPanels.is(':visible')) {
-						panel.show();
-						menuPanels.not('[id="'+panel.attr('id')+'"]').hide();
-					} else 
-						panel.slideDown(200);
-				}
-				if (e.which == $.ui.keyCode.ESCAPE) {
-					if (menuPanels.is(':visible')) panel.slideUp(100);
-				}
-				e.preventDefault();
-				e.stopPropagation();
-			});
-			
-			menuItems.on('mouseleave', function(e){
-				var panel = $(this).siblings('div[id$=menuPanel]')[0];
-				if (!$(panel).is(':hover')) {
-					menuPanels.stopTimeout();
-					menuPanels.startTimeout();;
-				}
-			});
-			
-			menuItems.on('keyup click', function(e) {
-				var panel = $(this).siblings('div[id$=menuPanel]');
-				if (e.which == $.ui.keyCode.ENTER || e.which == 1) {
-					$('.rpfMenuItem').removeClass('menu-active-state');
-					$(this).addClass('menu-active-state');;
-					e.preventDefault();
-					e.stopPropagation();
-				}
-			})
-			
-			menuPanels.on('mouseenter',function(){
-				$(this).stop(true,false).slideDown(0);
-				menuPanels.stopTimeout();
-			});
-
-			menuPanels.on('mouseleave keyup',function(e){
-				if (e.which == $.ui.keyCode.ESCAPE) {
-					if ($(this).is(':visible')) $(this).slideUp(100);
-				}
-				if  (e.which == 0 && !$(this).siblings(':hover')[0]) {
-					menuPanels.stopTimeout();
-					menuPanels.startTimeout();
-				}
-			});
-			
-			$(document).on('click', function(e){
-				if (menuPanels.is(':visible') && !(menuPanels.filter(e.target) || menuPanels.find(e.target)) ) {
-					menuPanels.slideUp(200);
-				}
-			});
-			
-		});
 		
-		//]]>
-	</script>
-	</ui:define>
+	
+		<f:event listener="#{testController.init}" type="preRenderView" />
+
+		<!-- custom menubar -->
+		<p:outputPanel id="menuBar">
+			<!-- Logo, Name und StartButton -->
+			<p:outputPanel id="appLogo">
+				<p:graphicImage library="images" name="logo.png" height="100px" />
+			</p:outputPanel>
+			<p:outputPanel id="appTitle">
+				<h:outputText value="MyApp Plattform" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:outputPanel id="homeItem" styleClass="rpfMenuItem">
+					<p:commandLink>
+						<i class="fa fa-home" /> Startseite
+					</p:commandLink>
+				</p:outputPanel>
+			</p:outputPanel>
+			<!-- Generierte Menüpunkte aus der DB -->
+			<ui:repeat id="menu" value="#{menuView.menuModel.elements}"
+				var="menuModel" varStatus="status">
+				<p:outputPanel id="menuItemWrapper">
+					<p:outputPanel id="menuItem" styleClass="rpfMenuItem">
+						<p:commandLink id="rootLink" value="#{menuModel.label}"/>
+					</p:outputPanel>
+					<p:outputPanel id="menuPanel" styleClass="menuOverlayLevel1">
+						<ui:include name="#{menuModel.label}" src="menuPanel.xhtml">
+							<ui:param name="menuItem" value="#{menuModel}" />
+						</ui:include>
+					</p:outputPanel>
+				</p:outputPanel>
+			</ui:repeat>
+			<!-- zusätliche Menupunkte -->
+			<p:outputPanel>
+				<p:outputPanel id="userItem" styleClass="rpfMenuItem">
+					<p:commandLink>
+						<i class="fa fa-user-circle-o" />
+					</p:commandLink>
+				</p:outputPanel>
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:outputPanel id="infoItem" styleClass="rpfMenuItem">
+					<p:commandLink>
+						<i class="fa fa-info-circle" />
+					</p:commandLink>
+				</p:outputPanel>
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:outputPanel id="logoutItem" styleClass="rpfMenuItem">
+					<p:commandLink>
+						<i class="fa fa-sign-out" />
+					</p:commandLink>
+				</p:outputPanel>
+			</p:outputPanel>
+		</p:outputPanel>
+		
+		<h:outputScript name="js/menubar.js"/>
+	
 </ui:composition>

@@ -5,9 +5,11 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-
+	
+	
 <h:head>
 	<title>PrimeFaces Hello World Example</title>
+	
 </h:head>
 
 <h:body>
@@ -21,25 +23,22 @@
 		
 		<p:growl id="messages" sticky="true"/>
 		
-		<p:layoutUnit position="north" size="auto" header="Header"
-			resizable="false" closable="false" collapsible="false">
-			<ui:include src="header.xhtml"/>
-			<ui:include src="topmenu.xhtml"/>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="west" size="auto" header="Navigation"
-			resizable="false" closable="false" collapsible="false" >
-			<ui:include src="sidemenu.xhtml"/>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center" style="padding:0px;overflow:auto;height:100%;">
-			<h:form id="contentForm" prependId="false" style="height:100%;">
-				
-				<ui:insert name="content"/>
-				
+		<p:outputPanel id="topMenuPanel" style="height:100%;">
+			<h:form id="topMenuForm" prependId="false">
+				<ui:include src="../menuBar/menuBarTest.xhtml"/>
 			</h:form>
-		</p:layoutUnit>
-
+		</p:outputPanel>
+		
+		<p:outputPanel id="sidePanel" style="position: relative;top: 70px; display:inline-block;vertical-align:top;margin:10px;">
+			<ui:include src="sidemenu.xhtml"/>
+		</p:outputPanel>
+		
+		<p:outputPanel id="content" style="position: relative;top: 70px; display:inline-block;vertical-align:top;margin:10px;">
+			<h:form id="contentForm" prependId="false">
+				<ui:insert name="content"/>
+			</h:form>
+		</p:outputPanel>
+		
 		<p:layoutUnit position="south" size="auto" header="Footer"
 			resizable="false" closable="false" collapsible="false">
 			<ui:include src="footer.xhtml"/>

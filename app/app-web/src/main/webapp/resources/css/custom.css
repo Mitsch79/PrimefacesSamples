@@ -1,14 +1,19 @@
 div#menuBar {
-	position: relative;
+	position: fixed;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
 	margin-right: auto;
 	margin-left: auto;
 	padding: 0px 28px 0px 28px;
 	z-index: 10001;
+	background: #08335e;
+	width:100%;
+	top: 0px;
+	left: 0px;
 }
 
-div#menuBar > div {
-	display:inline-block;
+div#menuBar>div {
+	display: inline-block;	
+	vertical-align:bottom;
 }
 
 div#menuBar div[id$="menuPanel"] {
@@ -24,42 +29,56 @@ div#menuBar div[id$="menuPanel"] {
 	box-shadow: inset 0 8px 10px -8px #333333, 0 8px 10px -8px #333333;
 }
 
-.menuOverlayLevel1 .ui-overlaypanel-content {
-	padding: 5px 2px 5px 2px;
-	visibility: visible !important;
+#appLogo {
+	display: inline-block;	
+	vertical-align:middle;
+	margin:5px 5px 1px 5px;
 }
 
-.rpfMenuItem {
-	padding: 15px 30px 15px 30px;
-	margin: 0px 1px 0px 0px;
-	display: inline-block;
-	font-weight: bold;
-	color: #2d6f9e !important;
+a {
 	text-decoration: none;
 }
 
-.rpfMenuItem:hover {
-	background: #eee;
-	font-weight: bold;
-	color: black !important;
-	border-bottom: 3px solid black;
-	padding-bottom: 12px;
+.fontSize20 {
+	font-size: 20px ;
 }
 
+#appTitle, .rpfMenuItem {
+	display: inline-block;	
+	border-bottom: 5px solid  #08335e;
+	padding: 15px 30px 15px 30px;
+	margin: 0px 1px 1px 0px;
+	display: inline-block;
+	font-size: 20px !important ;
+}
 
-.rpfMenuItem:focus {
-	background: #eee;
+div#menuBar>div>div a, #appTitle, #appHome a {
 	font-weight: bold;
-	color: black !important;
-	border-bottom: 3px solid black;
-	padding-bottom: 12px;
+	color:white ;
+}
+
+.positionLeft {
+	float:left;
+}
+
+.positionRight {
+	float: right;
+}
+
+.menuOverlayLevel1 .ui-overlaypanel-content {
+	padding: 5px 2px 5px 2px;
+	visibility: visible ;
+}
+
+.rpfMenuItem:hover, .rpfMenuItem:focus {
+	background: #18436d;
+	font-weight: bold;
+	border-bottom: 5px solid #d7984F;
 }
 
 .menu-active-state {
-	background: #e9e9e9;
-	border-bottom: 3px solid #2d6f9e;
-	color: #2d6f9e !important;
-	padding-bottom: 12px;
+	border-bottom: 5px solid  #d7984F;
+	color:white ;
 }
 
 .menuPanelSubMenu {
@@ -68,6 +87,6 @@ div#menuBar div[id$="menuPanel"] {
 }
 
 .menuPanelSubMenu .ui-datalist-content {
-	border:none;
+	border: none;
 	margin-right: 30px;
 }
