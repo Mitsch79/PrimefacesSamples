@@ -9,13 +9,17 @@
 	
 	<h:outputText value="#{menuItem.label}" style="display:block;font-weight:bold;font-size:3em;margin-left:10px;"/>
 	
+	<p:commandLink value="Klic" action="requiredTest" style="color:black;"/><br/>
+	
 	<ui:repeat value="#{menuItem.elements}" var="panelItem">
 		<h:outputText value="#{panelItem.class}" style="display:none;"/>
-		<p:panel header="#{panelItem.label}" rendered="#{!(panelItem.elementsCount eq 0)}" styleClass="menuPanelSubMenu">
+		<p:panel header="#{panelItem.label}" rendered="#{!(empty panelItem.children)}" styleClass="menuPanelSubMenu">
 			<p:dataList value="#{panelItem.elements}" var="linkList">
 				<h:outputText value="#{linkList.label}"/>
 			</p:dataList>
 		</p:panel>
+		#{panelItem.outcome}
+		<p:commandLink value="#{panelItem.value}" rendered="#{(empty panelItem.children)}" action="#{panelItem.outcome}" style="color:black;"/><br/>
 		
 	</ui:repeat>
 

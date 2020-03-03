@@ -21,7 +21,7 @@ $(document).ready(function() {
 	
 	menuItems.on( 'keyup mouseenter focus',	function(e) {
 		var panel = $(this).siblings('div[id$=menuPanel]');
-		menuPanels.stopTimeout();
+		menuPanels.stopTimeout();		
 		if (e.which == $.ui.keyCode.SPACE || e.which == $.ui.keyCode.ENTER || e.type == "mouseenter" || e.type == "focus") {
 			if (menuPanels.is(':visible')) {
 				panel.show();

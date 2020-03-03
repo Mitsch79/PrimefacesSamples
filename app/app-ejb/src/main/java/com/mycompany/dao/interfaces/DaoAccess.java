@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DaoAccess<T> {
-	     	     
-	    void save(T entity);
-	     
-	    void update(T entity);
-	     
-	    void delete(T entity);
 
-		Optional<T> loadById(Class<T> persistenceClass, long id);
+	void delete(T entity);
 
-		List<T> loadAll(Class<T> entityClass);
-		
+	List<T> loadAll(Class<T> entityClass);
+
+	Optional<T> loadById(Class<T> persistenceClass, long id);
+
+	void save(T entity);
+
+	void update(T entity);
+
 }

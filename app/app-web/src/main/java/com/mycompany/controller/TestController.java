@@ -13,6 +13,7 @@ import com.mycompany.pojo.MenuHierarchie;
 import com.mycompany.pojo.Tag;
 import com.mycompany.pojo.TagList;
 import com.mycompany.services.LandService;
+import com.mycompany.services.MenuService;
 import com.mycompany.services.TestService;
 
 @Named
@@ -35,6 +36,9 @@ public class TestController implements Serializable {
 
 	@Inject
 	private LandService landService;
+
+	@Inject
+	private MenuService menuService;
 
 	public void addEditableListEntry() {
 		testModel.getDataTableViewData().getEntryList().add(0, new EditableListEntry());
@@ -108,7 +112,7 @@ public class TestController implements Serializable {
 		testModel.setTagList(generateTagList().getTagList());
 		testModel.setTestList(testService.loadAll());
 		testModel.setLandList(landService.loadAll());
-		menuView.init(generateMenuHierarchie());
+		menuView.init(menuService.loadById(1).get());
 	}
 
 	public void removeEditableListEntry(int index) {

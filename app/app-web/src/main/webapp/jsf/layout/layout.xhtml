@@ -19,8 +19,6 @@
 		<h:outputStylesheet name="css/custom.css" />
 	</f:facet>
 
-	<p:layout fullPage="true">
-		
 		<p:growl id="messages" sticky="true"/>
 		
 		<p:outputPanel id="topMenuPanel" style="height:100%;">
@@ -29,23 +27,21 @@
 			</h:form>
 		</p:outputPanel>
 		
-		<p:outputPanel id="sidePanel" style="position: relative;top: 70px; display:inline-block;vertical-align:top;margin:10px;">
-			<ui:include src="sidemenu.xhtml"/>
+		<p:outputPanel id="content" style="position: relative;top: 70px; display:inline-block;vertical-align:top;border:1px solid lightgray;width:100%;">
+			<p:outputPanel id="sidePanel" style="vertical-align:top;margin:10px;display:inline-block;float:left;">
+				<ui:include src="sidemenu.xhtml"/>
+			</p:outputPanel>
+			<p:outputPanel style="vertical-align:top;margin:10px;border:1px solid lightgray;">
+				<h:form id="contentForm" prependId="false">
+					<ui:insert name="content"/>
+				</h:form>
+			</p:outputPanel>
 		</p:outputPanel>
 		
-		<p:outputPanel id="content" style="position: relative;top: 70px; display:inline-block;vertical-align:top;margin:10px;">
-			<h:form id="contentForm" prependId="false">
-				<ui:insert name="content"/>
-			</h:form>
-		</p:outputPanel>
-		
-		<p:layoutUnit position="south" size="auto" header="Footer"
-			resizable="false" closable="false" collapsible="false">
+		<p:outputPanel id="footer" style="position: relative;top: 70px; display:block;vertical-align:top;margin:10px;">
 			<ui:include src="footer.xhtml"/>
-		</p:layoutUnit>
-	</p:layout>
-	
-	
+		</p:outputPanel>
+
 
 
 </h:body>

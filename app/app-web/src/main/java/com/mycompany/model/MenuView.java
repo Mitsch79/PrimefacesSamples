@@ -12,7 +12,7 @@ import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuElement;
 import org.primefaces.model.menu.MenuModel;
 
-import com.mycompany.pojo.MenuHierarchie;
+import com.mycompany.entities.MenuEntity;
 
 @Named
 @SessionScoped
@@ -20,23 +20,24 @@ public class MenuView implements Serializable {
 
 	private static final long serialVersionUID = 2460995072810215199L;
 	private MenuModel menuModel;
-	private MenuHierarchie menuHierarchie;
+	private MenuEntity menuHierarchie;
 	private int maxLevel;
 
-	public void buildMenu(MenuHierarchie menuHierarchie, MenuElement menuElement) {
+	public void buildMenu(MenuEntity menuHierarchie, MenuElement menuElement) {
 		this.menuHierarchie = menuHierarchie;
-		for (MenuHierarchie menu : menuHierarchie.getChildEntries()) {
-			if (maxLevel < menu.getLevel())
-				maxLevel = menu.getLevel();
+		for (MenuEntity menu : menuHierarchie.getChildEntries()) {
+			if (maxLevel < menu.getEntryLevel())
+				maxLevel = menu.getEntryLevel();
 			if (!menu.getChildEntries().isEmpty()) {
 				DefaultSubMenu subMenu = new DefaultSubMenu(menu.getEntryTitle());
 				buildMenu(menu, subMenu);
 				if (menuElement != null)
 					((DefaultSubMenu) menuElement).addElement(subMenu);
-				if (menu.getLevel() == 1)
+				if (menu.getEntryLevel() == 1)
 					menuModel.addElement(subMenu);
 			} else {
 				DefaultMenuItem item = new DefaultMenuItem(menu.getEntryTitle());
+				item.setOutcome(menu.getEntryOutcome());
 				if (menuElement != null)
 					((DefaultSubMenu) menuElement).addElement(item);
 			}
@@ -47,7 +48,7 @@ public class MenuView implements Serializable {
 		return maxLevel;
 	}
 
-	public MenuHierarchie getMenuHierarchie() {
+	public MenuEntity getMenuHierarchie() {
 		return menuHierarchie;
 	}
 
@@ -67,7 +68,7 @@ public class MenuView implements Serializable {
 		return rootMenuModel;
 	}
 
-	public void init(MenuHierarchie menuHierarchie) {
+	public void init(MenuEntity menuHierarchie) {
 		menuModel = new DefaultMenuModel();
 		maxLevel = 0;
 		buildMenu(menuHierarchie, null);
@@ -77,7 +78,7 @@ public class MenuView implements Serializable {
 		this.maxLevel = maxLevel;
 	}
 
-	public void setMenuHierarchie(MenuHierarchie menuHierarchie) {
+	public void setMenuHierarchie(MenuEntity menuHierarchie) {
 		this.menuHierarchie = menuHierarchie;
 	}
 

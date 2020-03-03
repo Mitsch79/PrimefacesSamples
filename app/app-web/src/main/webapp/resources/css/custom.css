@@ -73,7 +73,7 @@ div#menuBar>div>div a, #appTitle, #appHome a {
 .rpfMenuItem:hover, .rpfMenuItem:focus {
 	background: #18436d;
 	font-weight: bold;
-	border-bottom: 5px solid #d7984F;
+	border-bottom: 5px solid white;
 }
 
 .menu-active-state {
